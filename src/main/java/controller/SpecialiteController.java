@@ -5,6 +5,8 @@
  */
 package controller;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -13,12 +15,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @author francoise
  */
 @Controller
-public class ControlFormation {
-  @GetMapping("/")
-  public String index()
-    {
-       return ("index");
-     
-    } 
+@EntityScan("entities")
+@EnableJpaRepositories("repositories")
+public class SpecialiteController {
+  @GetMapping("/specialites")
+   public String GetSpecialites()
+   {
+        return ("listeSpecialites");
    
+   }  
 }

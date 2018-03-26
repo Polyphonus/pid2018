@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head  th:replace="head">
+</head>
+<body>
+    <div class="container">
+        <header th:replace="header">
+               
+        </header>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Nos Specialités </h3>
+            </div>
+        </div>
+        <dl  th:each="specialite : ${specialites}">
+            <dd th:text="${specialite.nomSpecialite}"></dd>                  
+        </dl>  
+    </div>
+ 
+</body>
+</html>
+               
+   
