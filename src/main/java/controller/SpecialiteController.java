@@ -5,10 +5,18 @@
  */
 package controller;
 
+import entities.Specialite;
+import javax.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.ModelAndView;
+import repositories.SpecialiteRepository;
 
 /**
  *
@@ -18,10 +26,35 @@ import org.springframework.web.bind.annotation.GetMapping;
 @EntityScan("entities")
 @EnableJpaRepositories("repositories")
 public class SpecialiteController {
+    @Autowired
+   SpecialiteRepository specialiteRepository; 
   @GetMapping("/specialites")
    public String GetSpecialites()
    {
         return ("listeSpecialites");
    
+   } 
+   @GetMapping("/ajoutSpecialite")
+   public String GetAjoutSpecialite()
+   {
+        return ("ajoutSpecialite");
+   
    }  
+   @PostMapping("/ajoutSpecialite")
+        public ModelAndView postajoutSpecialite(@ModelAttribute("newSpecialite")@Valid Specialite newSpecialite, BindingResult bindingResult)
+        {
+            if(bindingResult.hasErrors())
+            {
+                return new ModelAndView("ajoutSpecialite");
+            }
+            try{
+            specialiteRepository.save(newSpecialite);
+            }
+            catch(Exception error)
+            {
+            return new ModelAndView("ajoutSpecialite","message",newSpecialite.getNomSpecialite()+" existe déjà");
+            }
+       
+            return new ModelAndView("redirect:/ajoutSpecialite.htm","message",newSpecialite.getNomSpecialite()+" ajoutée");
+    }   
 }

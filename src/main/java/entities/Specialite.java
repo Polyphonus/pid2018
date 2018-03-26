@@ -17,6 +17,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -35,6 +36,7 @@ public class Specialite implements Serializable {
     private Long id;
     
     @Column(length =50)
+    @Size(min = 1,max=50, message = "Le nom de 50 caractères maximum est obligatoire" )
     private String nomSpecialite;
 
     public String getNomSpecialite() {

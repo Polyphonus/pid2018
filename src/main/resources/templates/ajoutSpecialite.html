@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+   
+<head  th:replace="head">
+</head>
+<body>
+<div class="container">
+  <header th:replace="header">
+  </header>  
+
+     <div class="row">
+        <div class="col-lg-8 col-lg-offset-4">
+            <h2> Liste des specialités déjà enregistrées</h2>
+        </div>
+    </div>
+    
+     <div class="row">
+        <div class="col-lg-8 col-lg-offset-4">
+           
+            <ul th:each="specialite : ${specialites}">
+                <li><span th:text="${specialite.nomSpecialite}"></span></li>
+            </ul>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-4">
+            <form class="form-horizontal" th:object="${newSpecialite}" method="post">
+            <div class="row form-group">
+                <div  class="col-xs-6">
+                    <label for="nomSpecialite"> Nom de la specialite à ajouter:</label>
+                    <div class="input-group">
+                        <input type="text"  size="50" class="form-control" th:field="*{nomSpecialite}" />
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-xs-6">
+                        <div th:if="${#fields.hasErrors('nomSpecialite')}">
+                            <div id="erreur_Name" class="alert alert-danger ">
+                                <span th:if="${#fields.hasErrors('nomSpecialite')}" th:errors="*{nomSpecialite}">
+                                </span>
+                            </div> 
+                        </div>
+                     <div th:if="${message}!=NULL">
+                            <div id="erreur" class="alert alert-danger ">
+                                <span  th:text="${message}"></span>
+                            </div>
+                        </div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div  class="col-xs-3">
+                  
+                    
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">
+                            Ajouter
+                            </button>
+                        </span>
+                    </div>
+                </div>
+                
+    
+                
+            
+          
+       
+        </form>
+            
+        </div>
+    </div>
+</div>
+</body>
+</html>

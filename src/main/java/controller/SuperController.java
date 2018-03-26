@@ -27,4 +27,9 @@ public class SuperController {
         return specialites;
         
     }
+    @ModelAttribute("newSpecialite")
+    Specialite newSpecialite() 
+    {
+        return new Specialite();
+    }
 }
