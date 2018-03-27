@@ -29,19 +29,19 @@ public class SpecialiteController {
     @Autowired
    SpecialiteRepository specialiteRepository; 
   @GetMapping("/specialites")
-   public String GetSpecialites()
+   public String getSpecialites()
    {
         return ("listeSpecialites");
    
    } 
    @GetMapping("/ajoutSpecialite")
-   public String GetAjoutSpecialite()
+   public String getAjoutSpecialite()
    {
         return ("ajoutSpecialite");
    
    }  
    @PostMapping("/ajoutSpecialite")
-        public ModelAndView postajoutSpecialite(@ModelAttribute("newSpecialite")@Valid Specialite newSpecialite, BindingResult bindingResult)
+        public ModelAndView postAjoutSpecialite(@ModelAttribute("newSpecialite")@Valid Specialite newSpecialite, BindingResult bindingResult)
         {
             if(bindingResult.hasErrors())
             {
@@ -55,6 +55,6 @@ public class SpecialiteController {
             return new ModelAndView("ajoutSpecialite","message",newSpecialite.getNomSpecialite()+" existe déjà");
             }
        
-            return new ModelAndView("redirect:/ajoutSpecialite.htm","message",newSpecialite.getNomSpecialite()+" ajoutée");
+            return new ModelAndView("redirect:/ajoutSpecialite.htm");
     }   
 }

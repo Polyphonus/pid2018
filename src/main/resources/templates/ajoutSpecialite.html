@@ -39,7 +39,7 @@
                 <div class="col-xs-6">
                         <div th:if="${#fields.hasErrors('nomSpecialite')}">
                             <div id="erreur_Name" class="alert alert-danger ">
-                                <span th:if="${#fields.hasErrors('nomSpecialite')}" th:errors="*{nomSpecialite}">
+                                <span  th:errors="*{nomSpecialite}">
                                 </span>
                             </div> 
                         </div>
