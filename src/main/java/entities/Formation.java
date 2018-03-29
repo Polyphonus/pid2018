@@ -18,6 +18,8 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
 
 /**
  *
@@ -36,9 +38,14 @@ public class Formation implements Serializable {
     private Long id;
     
     @Column(length =50)
+    @Size(min = 1,max=50, message = "Le titre de 50 caractères maximum est obligatoire" )
     private String titre;
     
+    @Min(value = 1, message = "La durée est de minimum 1 jour" )
     private int duree;
+    
+    @Min(value = 1, message = "Le quota ne peut être nul" )
+    private int quota;
 
     public String getTitre() {
         return titre;
@@ -63,7 +70,8 @@ public class Formation implements Serializable {
     public void setQuota(int quota) {
         this.quota = quota;
     }
-    private int quota;
+    
+    
     
     public Long getId() {
         return id;

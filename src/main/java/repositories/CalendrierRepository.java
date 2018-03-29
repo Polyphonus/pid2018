@@ -5,9 +5,8 @@
  */
 package repositories;
 
-import entities.Specialite;
-import java.util.Collection;
-import org.springframework.data.jpa.repository.Query;
+import entities.Calendrier;
+import entities.Formation;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author francoise
  */
 @Repository
-public interface SpecialiteRepository extends CrudRepository<Specialite, Long>{
-   
+public interface CalendrierRepository extends CrudRepository<Calendrier, Long> {
+    
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+   
+<head  th:replace="head">
+</head>
+<body>
+<div class="container">
+    <header th:replace="header">
+    </header>  
+    <form class="form-horizontal"  method="post">
+    <div class="row form-group">
+    <div class="col-sm-3">
+    Sélectionner une date de début:
+    </div>
+    <div class="col-sm-2">
+        <input type="date" th:date="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}"
+               th:min="${#calendars.format(#calendars.createNow())}"
+               name="dateDebut"/>
+    </div>
+    </div>
+    <div class="row form-group">
+    <div class="col-sm-3">
+    Sélectionner une date de fin:
+    </div>
+    <div class="col-sm-2">
+        <input type="date" th:date="${#calendars.format(#calendars.createNow(), 'dd MMM yyyy HH:mm')}"
+               th:min="${#calendars.format(#calendars.createNow())}"
+               name="dateFin"/>
+    </div>
+    </div>
+    <div class="row form-group">
+    <div class="col-sm-5">
+    <input type="submit" />
+    </div>
+    </div>
+
+</form>
+</div>
+</body>
+</html>
+    
+        
+        
+
+
+
+
+
+  

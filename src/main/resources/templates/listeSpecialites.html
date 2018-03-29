@@ -9,11 +9,16 @@
         </header>
         <div class="row">
             <div class="col-lg-12">
-                <h3>Nos Specialités </h3>
+                <h3>Nos Formations: </h3>
             </div>
         </div>
         <dl  th:each="specialite : ${specialites}">
-            <dd th:text="${specialite.nomSpecialite}"></dd>                  
+            <dt th:text="${specialite.nomSpecialite}"></dt>  
+            <ul th:each="formation : ${formations}">
+                <span th:if="${formation.specialite==specialite}" >
+                    <li th:text="${formation.titre}" ></li>  
+                </span>
+            </ul>
         </dl>  
     </div>
  

@@ -5,7 +5,7 @@
  */
 package controller;
 
-import entities.Specialite;
+import entities.Formation;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import repositories.FormationRepository;
-import repositories.SpecialiteRepository;
 
 /**
  *
@@ -26,39 +25,32 @@ import repositories.SpecialiteRepository;
 @Controller
 @EntityScan("entities")
 @EnableJpaRepositories("repositories")
-public class SpecialiteController {
-   @Autowired
-   SpecialiteRepository specialiteRepository; 
+public class FormationController {
    @Autowired
    FormationRepository formationRepository; 
-   
-   @GetMapping("/formations")
-   public String getSpecialites()
+  
+   @GetMapping("/ajoutFormation")
+   public String getAjoutFormation()
    {
-        return ("listeSpecialites");
-   
-   } 
-   @GetMapping("/ajoutSpecialite")
-   public String getAjoutSpecialite()
-   {
-        return ("ajoutSpecialite");
+        return ("ajoutFormation");
    
    }  
-   @PostMapping("/ajoutSpecialite")
-        public ModelAndView postAjoutSpecialite(@ModelAttribute("newSpecialite")@Valid Specialite newSpecialite, BindingResult bindingResult)
+   @PostMapping("/ajoutFormation")
+        public ModelAndView postAjoutFormation(@ModelAttribute("newFormation")@Valid Formation newFormation, BindingResult bindingResult)
         {
             if(bindingResult.hasErrors())
             {
-                return new ModelAndView("ajoutSpecialite");
+                return new ModelAndView("ajoutFormation");
             }
-            try{
-            specialiteRepository.save(newSpecialite);
+            System.out.println(newFormation.getSpecialite().getNomSpecialite());
+           try{
+            formationRepository.save(newFormation);
             }
             catch(Exception error)
             {
-            return new ModelAndView("ajoutSpecialite","message",newSpecialite.getNomSpecialite()+" existe déjà");
+            return new ModelAndView("ajoutFormation","messages",newFormation.getTitre()+" existe déjà");
             }
        
-            return new ModelAndView("redirect:/ajoutSpecialite.htm");
+           return new ModelAndView("ajoutFormation","messages",newFormation.getTitre()+" ajouté");
     }   
 }

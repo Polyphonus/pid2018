@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+   
+<head  th:replace="head">
+</head>
+<body>
+<div class="container">
+  <header th:replace="header">
+  </header>  
+<form class="form-horizontal" th:object="${newFormation}" method="post">
+<div class="row form-group">
+    <div class="col-sm-3">
+    Sélectionner une spécialite:
+    </div>
+    <div class="col-sm-2">
+        <select id="specialite" name="specialite" th:field="*{specialite}">
+        <option th:each="specialite : ${specialites}" 
+        th:value="${specialite.id}" 
+        th:text="${specialite.nomSpecialite}">
+        </option>
+        </select>  
+    </div>
+</div>
+<div class="row form-group">
+    <div class="col-sm-3">
+    Titre de la formation:
+    </div>
+    <div class="col-sm-2">
+    <input type="text" size="50"  th:field="*{titre}" />
+    </div>
+</div>
+<div class="row form-group">
+    <div class="col-xs-6">
+    <div th:if="${#fields.hasErrors('titre')}">
+    <div id="erreur_Name" class="alert alert-danger ">
+    <span  th:errors="*{titre}"/>
+    </div> 
+    </div>
+    </div>
+</div>
+<div class="row form-group">
+    <div class="col-sm-3">
+    Durée de la formation:
+    </div>
+    <div class="col-sm-2">
+    <input type="number" size="2"  th:field="*{duree}" />
+    </div>
+</div>
+<div class="row form-group">
+    <div class="col-xs-6">
+    <div th:if="${#fields.hasErrors('duree')}">
+    <div id="erreur_Name" class="alert alert-danger ">
+    <span  th:errors="*{duree}"/>
+    </div> 
+    </div>
+    </div>
+</div>
+<div class="row form-group">
+    <div class="col-sm-3">
+    Quota de la formation:
+    </div>
+    <div class="col-sm-2">
+    <input type="number" size="2"  th:field="*{quota}" />
+    </div>
+</div>
+<div class="row form-group">
+    <div class="col-xs-6">
+    <div th:if="${#fields.hasErrors('quota')}">
+    <div id="erreur_Name" class="alert alert-danger ">
+    <span  th:errors="*{quota}"/>
+    </div> 
+    </div>
+    </div>
+</div>
+ <div class="row form-group">
+    <div class="col-sm-2">
+    <input type="submit" />
+    </div>
+ </div>
+ <span th:if="${messages}!=NULL">
+ <div class="row form-group">
+    <div class="col-xs-6">
+    <div id="erreur_Name" class="alert alert-danger ">
+    <span th:each="message : ${messages}" 
+    th:text="${message}">
+    </span>
+    </div>
+    </div>
+ </div>
+ </span>
+</form>
+</div>
+</body>
+</html>

@@ -5,11 +5,13 @@
  */
 package controller;
 
+import entities.Formation;
 import entities.Specialite;
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import repositories.FormationRepository;
 import repositories.SpecialiteRepository;
 
 /**
@@ -20,6 +22,8 @@ import repositories.SpecialiteRepository;
 public class SuperController {
    @Autowired
    SpecialiteRepository specialiteRepository; 
+   @Autowired
+   FormationRepository formationRepository; 
    @ModelAttribute("specialites")
     Collection<Specialite>findAllSpecialite()
     {
@@ -31,5 +35,17 @@ public class SuperController {
     Specialite newSpecialite() 
     {
         return new Specialite();
+    }
+    @ModelAttribute("formations")
+    Collection<Formation>findAllFormations()
+    {
+        Collection<Formation> formations=(Collection<Formation>) formationRepository.findAll();
+        return formations;
+        
+    }
+    @ModelAttribute("newFormation")
+    Formation newFormation() 
+    {
+        return new Formation();
     }
 }

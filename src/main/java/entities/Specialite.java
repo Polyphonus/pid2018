@@ -86,8 +86,8 @@ public class Specialite implements Serializable {
 
     public Specialite() {
     }
-   /* @ManyToMany(mappedBy="specialite")
-    private List <Formation> formations=new ArrayList();
+    /*@ManyToMany(mappedBy="specialite")
+    private List <Formation> formations;
 
     public List<Formation> getFormations() {
         return formations;
