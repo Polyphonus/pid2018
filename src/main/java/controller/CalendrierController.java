@@ -7,9 +7,11 @@ package controller;
 
 import entities.Calendrier;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.regex.Matcher;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import repositories.CalendrierRepository;
 import repositories.FormationRepository;
 
@@ -35,7 +38,7 @@ import repositories.FormationRepository;
 public class CalendrierController {
     @Autowired
     CalendrierRepository calendrierRepository; 
-  
+    List<String> messages = new ArrayList<String>();
     @GetMapping("/ajoutCalendrier")
     public String getAjoutCalendrier()
     {
@@ -43,7 +46,7 @@ public class CalendrierController {
    
     }   
     @PostMapping("/ajoutCalendrier")
-    public ModelAndView postAjoutCalendrier(WebRequest wq)
+    public ModelAndView postAjoutCalendrier(WebRequest wq,RedirectAttributes redirectAttributes)
     {
         String[] dateDebut =wq.getParameterValues("dateDebut");
         String[]dateFin=wq.getParameterValues("dateFin");
@@ -57,14 +60,8 @@ public class CalendrierController {
             Date dateFinFormatee=simpleDateFormat.parse(dateFin[0]);
             System.out.println("date debut "+ dateCourante);
             System.out.println("date fin "+ dateFinFormatee);
-            cal.setTime(dateCourante);
-            cal.add(Calendar.DAY_OF_MONTH,1);
-            dateCourante=cal.getTime();
-            cal.setTime(dateFinFormatee);
-            cal.add(Calendar.DAY_OF_MONTH,1);
-            dateFinFormatee=cal.getTime();
-            calendrierRepository.save(new Calendrier(dateCourante));
-            while (dateCourante.before(dateFinFormatee))
+           
+            while (!(dateCourante.after(dateFinFormatee)))
                 {
                 cal.setTime(dateCourante);
                 cal.add(Calendar.DAY_OF_MONTH,1);
@@ -76,13 +73,10 @@ public class CalendrierController {
                 }
         }
         catch(Exception e){
-        
+            redirectAttributes.addFlashAttribute("messages","problème"); 
         }
-       
-       
-         
-       
-            return new ModelAndView("redirect:/ajoutCalendrier.htm");
+        redirectAttributes.addFlashAttribute("messages",cpt + " dates ajoutées");
+        return new ModelAndView("redirect:/ajoutCalendrier.htm");
         
        
    

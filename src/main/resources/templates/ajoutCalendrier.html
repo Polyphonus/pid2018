@@ -28,6 +28,13 @@
     </div>
     </div>
     <div class="row form-group">
+        <div class="col-sm-5">
+            <span th:each="message : ${messages}" 
+                th:text="${message}">
+            </span>
+        </div>
+    </div>
+    <div class="row form-group">
     <div class="col-sm-5">
     <input type="submit" />
     </div>
