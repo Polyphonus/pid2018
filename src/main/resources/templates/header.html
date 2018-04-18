@@ -29,6 +29,20 @@ and open the template in the editor.
                 <li><a href="/ajoutSession" th:href="@{/ajoutSession}">Ajouter une session</a></li>
                 </ul>
             </li>
+            <li> <a class="navbar-brand" sec:authorize="isAnonymous()" href="/inscription" th:href="@{/inscription}">S'inscrire</a>
+            </li>
+            <div class="navbar-header" sec:authorize="isAnonymous()">
+                        
+                <form th:action="@{/login}" method="post" class="navbar-form form-inline pull-left">
+                <input type="text" id="username" name="username" placeholder="Login"/>
+                <input type="password" id="password" name="password" placeholder="Password"/>
+                <div class="alert-danger" th:if="${param.error ne null}"> username et password  invalides</div>
+                <div class="alert-normal" th:if="${param.logout ne null}">Vous avez été déconnecté.</div>
+                <input type="submit" value="Connexion" />
+                </form>
+            </div>
+            <li><a class="navbar-brand" sec:authorize="isAuthenticated()" href="/logout" th:href="@{/logout}">logout</a>
+            </li>
             </ul>
           
        

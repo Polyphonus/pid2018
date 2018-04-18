@@ -69,7 +69,7 @@
             <version>2.1.4</version>
         </dependency>
 
-<dependency>
+        <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest-core</artifactId>
             <version>1.3</version>
@@ -92,6 +92,24 @@
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
             <version>1.4.0.RELEASE</version>
+        </dependency>
+        <!-- tag::security[] -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>1.4.1.RELEASE</version>
+        </dependency>
+        <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.3</version>
+        </dependency>
+    <!-- https://mvnrepository.com/artifact/org.thymeleaf.extras/thymeleaf-extras-springsecurity4 -->
+        <dependency>
+        <groupId>org.thymeleaf.extras</groupId>
+        <artifactId>thymeleaf-extras-springsecurity4</artifactId>
+        <version>2.1.2.RELEASE</version>
+        
         </dependency>
     </dependencies>
 </project>
