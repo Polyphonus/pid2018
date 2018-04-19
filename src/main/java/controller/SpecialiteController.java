@@ -59,6 +59,6 @@ public class SpecialiteController {
             return new ModelAndView("ajoutSpecialite","message",newSpecialite.getNomSpecialite()+" existe déjà");
             }
        
-            return new ModelAndView("redirect:/ajoutSpecialite.htm");
+            return new ModelAndView("redirect:/admin/ajoutSpecialite.htm");
     }   
 }

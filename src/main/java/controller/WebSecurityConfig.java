@@ -31,7 +31,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
  @Override
     protected void configure(HttpSecurity http) throws Exception {
         //uniquement pour test junit à décommenter 
-        // http.csrf().disable();
+        http.csrf().disable();
         /*
         HttpSecurity It allows configuring web based security for specific http requests.
         By default it will be applied to all requests, 

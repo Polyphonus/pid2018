@@ -39,7 +39,7 @@ public class CalendrierController {
     @Autowired
     CalendrierRepository calendrierRepository; 
     List<String> messages = new ArrayList<String>();
-    @GetMapping("/ajoutCalendrier")
+    @GetMapping("/admin/ajoutCalendrier")
     public String getAjoutCalendrier()
     {
         return ("ajoutCalendrier");

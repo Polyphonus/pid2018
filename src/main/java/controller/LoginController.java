@@ -12,7 +12,6 @@ import javax.validation.Valid;
 import entities.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -25,7 +24,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import repositories.UserRepository;
 import repositories.UserRolesRepository;
 
-import org.springframework.context.annotation.ComponentScan;
 
 /**
  *
