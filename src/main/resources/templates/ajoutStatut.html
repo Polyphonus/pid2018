@@ -11,35 +11,35 @@
 
      <div class="row">
         <div class="col-lg-8 col-lg-offset-4">
-            <h2> Liste des specialités déjà enregistrées</h2>
+            <h2> Liste des statuts déjà enregistrés</h2>
         </div>
     </div>
     
      <div class="row">
         <div class="col-lg-8 col-lg-offset-4">
            
-            <ul th:each="specialite : ${specialites}">
-                <li><span th:text="${specialite.nomSpecialite}"></span></li>
+            <ul th:each="statut : ${statuts}">
+                <li><span th:text="${statut.statut}"></span></li>
             </ul>
         </div>  
     </div>
     <div class="row">
         <div class="col-lg-8 col-lg-offset-4">
-            <form class="form-horizontal" th:object="${newSpecialite}" method="post">
+            <form class="form-horizontal" th:object="${newStatut}" method="post">
             <div class="row form-group">
                 <div  class="col-xs-6">
-                    <label for="nomSpecialite"> Nom de la specialite à ajouter:</label>
+                    <label for="statut"> Nom du statut à ajouter:</label>
                     <div class="input-group">
-                        <input type="text"  size="50" class="form-control" th:field="*{nomSpecialite}" />
+                        <input type="text"  size="50" class="form-control" th:field="*{statut}" />
                         
                     </div>
                 </div>
             </div>
             <div class="row form-group">
                 <div class="col-xs-6">
-                        <div th:if="${#fields.hasErrors('nomSpecialite')}">
+                        <div th:if="${#fields.hasErrors('statut')}">
                             <div id="erreur_Name" class="alert alert-danger ">
-                                <span  th:errors="*{nomSpecialite}">
+                                <span  th:errors="*{statut}">
                                 </span>
                             </div> 
                         </div>

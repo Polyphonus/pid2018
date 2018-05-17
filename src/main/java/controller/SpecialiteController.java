@@ -38,13 +38,13 @@ public class SpecialiteController {
         return ("listeSpecialites");
    
    } 
-   @GetMapping("/ajoutSpecialite")
+   @GetMapping("/admin/ajoutSpecialite")
    public String getAjoutSpecialite()
    {
         return ("ajoutSpecialite");
    
    }  
-   @PostMapping("/ajoutSpecialite")
+   @PostMapping("/admin/ajoutSpecialite")
         public ModelAndView postAjoutSpecialite(@ModelAttribute("newSpecialite")@Valid Specialite newSpecialite, BindingResult bindingResult)
         {
             if(bindingResult.hasErrors())

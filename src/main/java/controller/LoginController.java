@@ -85,7 +85,7 @@ public class LoginController {
         user.setPassword(hashedPassword);
         userRepository.save(user);
         UserRole userRole=new UserRole();
-        userRole.setUserid(user.getUserid());
+        userRole.setUserid(user.getUserId());
         userRole.setRole("ROLE_USER");
         userRolesRepository.save(userRole);
         return "index";

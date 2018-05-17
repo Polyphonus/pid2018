@@ -38,15 +38,15 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @TestPropertySource(locations="classpath:test.properties")
 @AutoConfigureMockMvc
-public class CalendrierJunitTest {
+public class FormationJUnitTest {
    @Autowired
     private MockMvc mvc;
 @Test
-@WithMockUser(username="admin",roles={"USER"})
+@WithMockUser(username="admin",roles={"ADMIN"})
  public void test() throws Exception {
     //test get 
-    mvc.perform(MockMvcRequestBuilders.get("/admin/ajoutCalendrier").accept(MediaType.APPLICATION_JSON))
+    mvc.perform(MockMvcRequestBuilders.get("/admin/ajoutFormation").accept(MediaType.APPLICATION_JSON))
        .andExpect(status().isOk())
-       .andExpect(view().name("ajoutCalendrier"));
+       .andExpect(view().name("ajoutFormation"));
 }
 }

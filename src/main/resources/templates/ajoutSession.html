@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+   
+<head  th:replace="head">
+
+</head>
+<body>
+    
+<div class="container">
+  <header th:replace="headerAdmin">
+  </header>  
+<form class="form-horizontal" th:object="${newSession}" method="post">
+<div class="row form-group">
+    <div class="col-sm-3">
+    Sélectionner une formation:
+    </div>
+    <div class="col-sm-2">
+        <select id="formation" name="formation"  th:field="*{formation}">
+            <option value="0">Choisir une formation </option>
+        <option th:each="formation : ${formations}" 
+        th:value="${formation.id}" 
+        th:text="${formation.titre}">
+        </option>
+        </select>  
+    </div>
+</div>
+<div class="row form-group">
+    <div  class="col-sm-3">
+    Sélectionner un formateur:
+    </div>
+     <div class="col-sm-2">
+       <select id="user" name="user"  th:field="*{user}">  
+      
+       </select> 
+        
+           
+    </div>
+</div>
+ <div class="row form-group">
+    <div class="col-sm-2">
+    <input type="submit" />
+    </div>
+ </div>
+ <span th:if="${message}!=NULL">
+ <div class="row form-group">
+    <div class="col-xs-6">
+    <div id="erreur_Name" class="alert alert-danger ">
+    <span     th:text="${message}">
+    </span>
+    </div>
+    </div>
+ </div>
+ </span>
+ <input type="hidden" th:id="token" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+</form>
+</div>
+</body>
+<script language="javascript">
+ $("#formation").change(function(){
+  
+    var url='listProfFormation?_csfr='+token.value+'&;'+'formationId='+formation.value;
+   
+    $("#user").load(url);
+  
+ });
+</script>
+</html>

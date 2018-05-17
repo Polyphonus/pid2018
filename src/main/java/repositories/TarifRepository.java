@@ -5,11 +5,8 @@
  */
 package repositories;
 
-import entities.Formation;
-import entities.User;
-import java.util.Collection;
-import java.util.List;
-import org.springframework.data.jpa.repository.Query;
+import entities.Calendrier;
+import entities.TarifFormation;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -18,8 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author francoise
  */
 @Repository
-public interface FormationRepository extends CrudRepository<Formation, Long>{
- 
-@Query("select a from Formation a where a.titre=?1")  
-public Formation findByTitre(String titre);
+public interface TarifRepository extends CrudRepository<TarifFormation, Long> {
+    
 }

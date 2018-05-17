@@ -45,7 +45,7 @@ public class CalendrierController {
         return ("ajoutCalendrier");
    
     }   
-    @PostMapping("/ajoutCalendrier")
+    @PostMapping("/admin/ajoutCalendrier")
     public ModelAndView postAjoutCalendrier(WebRequest wq,RedirectAttributes redirectAttributes)
     {
         String[] dateDebut =wq.getParameterValues("dateDebut");
@@ -76,7 +76,7 @@ public class CalendrierController {
             redirectAttributes.addFlashAttribute("messages","problème"); 
         }
         redirectAttributes.addFlashAttribute("messages",cpt + " dates ajoutées");
-        return new ModelAndView("redirect:/ajoutCalendrier.htm");
+        return new ModelAndView("redirect:/admin/ajoutCalendrier.htm");
         
        
    

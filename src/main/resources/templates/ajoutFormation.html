@@ -5,8 +5,9 @@
 <head  th:replace="head">
 </head>
 <body>
+    
 <div class="container">
-  <header th:replace="header">
+  <header th:replace="headerAdmin">
   </header>  
 <form class="form-horizontal" th:object="${newFormation}" method="post">
 <div class="row form-group">
@@ -73,17 +74,29 @@
     </div>
     </div>
 </div>
+<span th:each="statut : ${statuts}">
+<div class="form-group"> 
+    <div class="col-sm-3">
+    <label  th:text="'tarif ' +${statut.statut}"></label>
+    </div>
+    <div class="col-sm-2">
+    <div class="input-group">
+    <input type="number" size="2" class="form-control" th:name="${statut.statut}" th:value="0"/> 
+    <div class="input-group-addon"> €</div>
+    </div> 
+    </div>
+</div>
+</span>
  <div class="row form-group">
     <div class="col-sm-2">
     <input type="submit" />
     </div>
  </div>
- <span th:if="${messages}!=NULL">
+ <span th:if="${message}!=NULL">
  <div class="row form-group">
     <div class="col-xs-6">
     <div id="erreur_Name" class="alert alert-danger ">
-    <span th:each="message : ${messages}" 
-    th:text="${message}">
+    <span     th:text="${message}">
     </span>
     </div>
     </div>

@@ -56,16 +56,16 @@ public class SpecialiteJunitTest {
     @Test
      public void test() throws Exception {
          //test get 
-         mvc.perform(MockMvcRequestBuilders.get("/ajoutSpecialite").accept(MediaType.APPLICATION_JSON))
+        /* mvc.perform(MockMvcRequestBuilders.get("/ajoutSpecialite").accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
-                .andExpect(view().name("ajoutSpecialite"));
+                .andExpect(view().name("ajoutSpecialite"));*/
         
         //test post sans erreur
-       /* mvc.perform(MockMvcRequestBuilders.post("/ajoutSpecialite").accept(MediaType.APPLICATION_JSON_UTF8)
+        mvc.perform(MockMvcRequestBuilders.post("/ajoutSpecialite").accept(MediaType.APPLICATION_JSON_UTF8)
                     .param("nomSpecialite",nomSpecialite))
-                    .andExpect(status().is(302))
-                    .andExpect( redirectedUrl("/ajoutSpecialite.htm"));
-         */    
+                    .andExpect(status().is(200))
+                    .andExpect( redirectedUrl("/ajoutSpecialite"));
+             
                    
         // test post avec doublon
         /*mvc.perform(MockMvcRequestBuilders.post("/ajoutSpecialite").accept(MediaType.APPLICATION_JSON_UTF8)
@@ -75,7 +75,7 @@ public class SpecialiteJunitTest {
                     .andExpect(model().attributeExists("message"));*/
         
         /* test post erreur longueur */
-        /* mvc.perform(MockMvcRequestBuilders.post("/ajoutSpecialite").accept(MediaType.APPLICATION_JSON_UTF8)
+        /*mvc.perform(MockMvcRequestBuilders.post("/ajoutSpecialite").accept(MediaType.APPLICATION_JSON_UTF8)
                     .param("nomSpecialite",nomSpecialiteVide))
                     .andExpect(status().is(200))
                     .andExpect(view().name("ajoutSpecialite"))

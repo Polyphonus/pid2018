@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<th:block   xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <span  th:fragment="resultList">
+    <option value="0">Choisir une formateur </option>
+    <option  th:each="formateur : ${formateurs}" 
+        th:value="${formateur.userId}" 
+        th:text="${formateur.userName}">
+        </option>
+    </span>
+</th:block>

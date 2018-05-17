@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+   
+<head >
+
+</head>
+<body>
+    
+<div th:fragment="resultsList" th:unless="${#lists.isEmpty(formateurs)}" id="results-block">
+    <div class="col-sm-3">
+   
+    Sélectionner un formateur:
+    </div>
+    <div class="col-sm-2">
+        <select id="user" name="user"  th:field="*{user}">
+           
+            
+            
+           
+            <option th:unless="${#lists.isEmpty(formateurs)}" th:each="formateur : ${formateurs}" 
+                th:value="${formateur.userId}" 
+                th:text="${formateur.userName}">
+            </option>
+        </select>  
+    
+    </div>

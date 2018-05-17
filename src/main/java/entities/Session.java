@@ -49,6 +49,10 @@ public class Session implements Serializable {
     @OneToOne
     @JoinColumn(nullable=false)
     private Formation formation;
+
+    public Formation getFormation() {
+        return formation;
+    }
     
     @OneToOne
     @JoinColumn(nullable=false)
